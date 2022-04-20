@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<h1>Delete Stock</h1><br>
+<table class="table table-striped table-bordered table-hover w-25">
+    <thead class="table-dark">
+        <tr>
+            <th scope="col">Stock</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if ticker %}
+            {% for item in ticker %}
+                <tr>
+                    <td>{{ item }}</td>
+                    <td><div class="text-center"><a href="{% url 'delete' item.id %}" class="btn btn-secondary">Delete Stock</a></div></td>
+                </tr>
+
+            {% endfor %}
+        {% else %}
+            <tr>
+                <span style="color:red">Not stonk!!!</span>
+                <td style="color:red">You dont have any stocks...</td>
+                <td style="color:red">Not Stonk...</td>
+            </tr>
+        {% endif %}
+
+    </tbody>
+</table>
+<a href="{% url 'add_stock' %}" class="btn btn-secondary">Add Stock</a>
+{% endblock %}
+
